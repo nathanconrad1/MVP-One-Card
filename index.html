@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Tracker</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 0;
+        margin: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background-color: #8ecea9;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .top-right-menu {
+        display: flex;
+        gap: 10px;
+      }
+      .top-right-menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        background-color: #28a745;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+      .content {
+        padding: 15px;
+      }
+      .activity {
+        background-color: white;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      #notification {
+        display: none;
+        background-color: #28a745;
+        color: white;
+        padding: 10px;
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <button id="enter-location-btn">Enter Payment Location</button>
+      <!-- <h1>One Card</h1> -->
+      <div class="top-right-menu">
+        <a href="index.html">Home</a>
+        <a href="account.html">Account</a>
+      </div>
+    </header>
+
+    <div id="notification"></div>
+
+    <div class="content">
+      <h2>Recent Activity</h2>
+      <div class="activity">
+        <h3>Starbucks</h3>
+        <p>Recommended Card: Chase Sapphire Preferred</p>
+      </div>
+      <div class="activity">
+        <h3>Whole Foods</h3>
+        <p>Recommended Card: American Express Gold</p>
+      </div>
+      <div class="activity">
+        <h3>Amazon</h3>
+        <p>Recommended Card: Amazon Prime Rewards Visa</p>
+      </div>
+      <div class="activity">
+        <h3>Target</h3>
+        <p>Recommended Card: Citi Double Cash</p>
+      </div>
+      <div class="activity">
+        <h3>Best Buy</h3>
+        <p>Recommended Card: Bank of America Cash Rewards</p>
+      </div>
+    </div>
+
+    <script>
+      const places = [
+        "Starbucks",
+        "Whole Foods",
+        "Amazon",
+        "Target",
+        "Best Buy",
+      ];
+      const cards = [
+        "Chase Sapphire Preferred",
+        "American Express Gold",
+        "Amazon Prime Rewards Visa",
+        "Citi Double Cash",
+        "Bank of America Cash Rewards",
+      ];
+
+      document
+        .getElementById("enter-location-btn")
+        .addEventListener("click", () => {
+          const randomPlace = places[Math.floor(Math.random() * places.length)];
+          const randomCard = cards[Math.floor(Math.random() * cards.length)];
+          const notification = document.getElementById("notification");
+          notification.textContent = `We noticed you're at ${randomPlace}. You should use your ${randomCard} to maximize your rewards!`;
+          notification.style.display = "block";
+          setTimeout(() => {
+            notification.style.display = "none";
+          }, 10000);
+        });
+    </script>
+  </body>
+</html>
